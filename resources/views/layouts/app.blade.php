@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Lottery') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,9 +25,10 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="margin-bottom: 10px;">
-            <a class="navbar-brand" href="#">成人式の企画（仮）</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">Lottery（仮）</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -43,6 +44,7 @@
                     <li class="nav-item">
                         <a name="" id="" class="btn btn-primary md" href="#" role="button">ゲームを主催する</a>
                     </li>
+                    @if (Auth::check())
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">アカウントメニュー</a>
@@ -52,6 +54,14 @@
                             <a class="dropdown-item" href="#">退会</a>
                         </div>
                     </li>
+                    @else
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">ログイン <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/register">新規登録 <span class="sr-only">(current)</span></a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </nav>
