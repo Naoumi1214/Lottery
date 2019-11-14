@@ -4,11 +4,11 @@
 <div class="container">
     <div id="nomalimg">
         <p></p>
-    <img src="{{/storage/app/public/usericonimgs/food_character_nerimono_tsumire.png}}" alt="">
+    <img src="\storage\usericonimgs\food_character_nerimono_tsumire.png" alt="">
     </div>
     <div id="usericon">
-        <p></p>
-        <img src="" alt="" srcset="">
+    <p>{{$usericon}}</p>
+        <img src="{{$usericon}}" alt="" srcset="">
     </div>
 </div>
 @endsection

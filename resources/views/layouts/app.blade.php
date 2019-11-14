@@ -50,7 +50,7 @@
                             aria-haspopup="true" aria-expanded="false">アカウントメニュー</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
                             <a class="dropdown-item" href="#">マイページ</a>
-                            <a class="dropdown-item" href="#">ログアウト</a>
+                            <a class="dropdown-item" href="/logout">ログアウト</a>
                             <a class="dropdown-item" href="#">退会</a>
                         </div>
                     </li>
