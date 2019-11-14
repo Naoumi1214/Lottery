@@ -15,7 +15,11 @@ class CreateUserIconsTable extends Migration
     {
         Schema::create('user_icons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            //user_idはusersのidを外部キーとして参照
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users')->onDelete('cascade');
+            $table->string('imgpath')->default('public/iconimgs/food_character_nerimono_tsumire.png');
             $table->timestamps();
         });
     }
