@@ -22,4 +22,15 @@ class CompetitionsController extends Controller
         # code...
         return view('createCompetitions');
     }
+
+    public function insert(Request $request)
+    {
+        # code...
+        $param = [
+            'name' => $request->name,
+            'overview' => $request->overview,
+            'icon' => $request->icon
+        ];
+        return response()->json($param);
+    }
 }

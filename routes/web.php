@@ -25,3 +25,4 @@ Route::get('/test', 'TestController@index');
 
 //大会関係
 Route::get('/create', 'CompetitionsController@create');
+Route::post('/create', 'CompetitionsController@insert');
