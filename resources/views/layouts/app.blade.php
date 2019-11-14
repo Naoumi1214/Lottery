@@ -42,7 +42,7 @@
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0 active">
                     <li class="nav-item">
-                        <a name="" id="" class="btn btn-primary md" href="#" role="button">ゲームを主催する</a>
+                        <a name="" id="" class="btn btn-primary md" href="/create" role="button">大会を主催する</a>
                     </li>
                     @if (Auth::check())
                     <li class="nav-item dropdown">

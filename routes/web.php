@@ -15,9 +15,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+//ログアウト
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Auth::routes();
 
-
+//テスト用
 Route::get('/test', 'TestController@index');
+
+//大会関係
+Route::get('/create', 'CompetitionsController@create');
