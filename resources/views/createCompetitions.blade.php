@@ -15,11 +15,6 @@
                     <label for="">概要</label>
                     <textarea class="form-control" name="overview" id="" rows="3"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="">アイコン画像</label>
-                    <input type="file" class="form-control-file" name="icon" id="" placeholder=""
-                        aria-describedby="fileHelpId">
-                </div>
                 <input type="hidden" name="user_id" value="{{Auth::id()}}">
                 <button type="submit" class="btn btn-primary">主催</button>
             </form>

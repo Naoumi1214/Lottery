@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class competition extends Model
+class Competition extends Model
 {
     //
     protected $table = '_competitions';
@@ -13,7 +13,7 @@ class competition extends Model
 
      //バリデーションルール
      public static $rules = [
+         'user_id' => 'integer',
         'name' => 'required',
-        'icon' => ''
     ];
 }
