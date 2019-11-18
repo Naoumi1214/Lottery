@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="margin-bottom: 10px;">
-            <a class="navbar-brand" href="#">Lottery（仮）</a>
+            <a class="navbar-brand" href="\">Lottery（仮）</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                 data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -41,15 +41,15 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0 active">
+                    @if (Auth::check())
                     <li class="nav-item">
                         <a name="" id="" class="btn btn-primary md" href="/create" role="button">大会を主催する</a>
                     </li>
-                    @if (Auth::check())
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">アカウントメニュー</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">マイページ</a>
+                            <a class="dropdown-item" href="/my">マイページ</a>
                             <a class="dropdown-item" href="/logout">ログアウト</a>
                             <a class="dropdown-item" href="#">退会</a>
                         </div>

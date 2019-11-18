@@ -10,10 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
+//ホーム画面
+Route::get('/', 'CompetitionsController@index');
 
 //ログアウト
 Route::get('/logout', 'Auth\LoginController@logout');
@@ -23,6 +21,13 @@ Auth::routes();
 //テスト用
 Route::get('/test', 'TestController@index');
 
-//大会関係
-Route::get('/create', 'CompetitionsController@create');
-Route::post('/create', 'CompetitionsController@insert');
+
+Route::group(['middleware' => ['auth']], function () {
+    //大会主催の登録関係
+    Route::get('/create', 'CompetitionsController@create');
+    Route::post('/create', 'CompetitionsController@insert');
+    //ホストの主催一覧
+    Route::get('/my', 'CompetitionsController@my');
+});
+//大会の詳細
+Route::get('/details/{id}', 'CompetitionsController@details');
