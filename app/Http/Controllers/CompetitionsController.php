@@ -94,6 +94,7 @@ class CompetitionsController extends Controller
             'overview' => $competition->overview,
             'icon' => $competition->icon
         ];
-        var_dump($param);
+        //var_dump($param);
+        return view('/details',$param);
     }
 }
