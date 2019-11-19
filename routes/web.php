@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/create', 'CompetitionsController@insert');
     //ホストの主催一覧
     Route::get('/my', 'CompetitionsController@my');
+
+    Route::get('/createWinningType/{id}', 'WinningTypesController@index');
 });
 //大会の詳細
 Route::get('/details/{id}', 'CompetitionsController@details');
