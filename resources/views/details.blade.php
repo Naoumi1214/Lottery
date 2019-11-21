@@ -25,7 +25,7 @@
                     role="button">当選を確認</a>
                 @if (Auth::check() && Auth::id()===$user_id)
                 <a href="{{url('/createWinningType', $id)}}"
-                    class="btn btn-primary active btn-block center-block" role="button">当選を確認</a>
+                    class="btn btn-primary active btn-block center-block" role="button">当選種類を管理する</a>
                 @endif
             </div>
         </div>

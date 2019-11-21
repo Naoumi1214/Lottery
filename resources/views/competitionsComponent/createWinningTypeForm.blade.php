@@ -8,7 +8,7 @@
     <div class="form-group">
         <label for="">最大当選人数</label>
         <select class="form-control" name="maxNumberOfPeople" id="maxNumberOfPeople">
-
         </select>
     </div>
+    <button type="submit" class="btn btn-primary">追加する</button>
 </form>
