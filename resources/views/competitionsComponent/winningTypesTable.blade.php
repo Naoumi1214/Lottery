@@ -8,7 +8,7 @@
     <tbody>
         @foreach ($winning_typesObj as $winning_type)
         <tr>
-            <td scope="row"><a href="" style="color: blue">{{$winning_type->name}}</a></td>
+        <td scope="row"><a href="{{url('/updateWinningType',$winning_type->id)}}" style="color: blue">{{$winning_type->name}}</a></td>
             <td>{{$winning_type->maxNumberOfPeople}}</td>
         </tr>
         @endforeach

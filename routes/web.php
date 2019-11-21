@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/winningTypeManager/{id}', 'WinningTypesController@index');
     //当選種類を追加
     Route::post('/createWinningType', 'WinningTypesController@create');
+    //当選種類の編集
+    Route::get('/updateWinningType/{id}', 'WinningTypesController@update');
 });
 //大会の詳細
 Route::get('/details/{id}', 'CompetitionsController@details');

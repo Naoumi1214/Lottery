@@ -101,6 +101,13 @@ class WinningTypesController extends Controller
     public function update(Request $request, WinningType $winningType)
     {
         //
+        $winningType = WinningType::find($request->id);
+
+        $param =[
+            'winningType' => $winningType
+        ];
+
+        return view('updateWinningType',$param);
     }
 
     /**
