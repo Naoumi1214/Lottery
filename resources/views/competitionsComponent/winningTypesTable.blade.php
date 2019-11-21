@@ -1,3 +1,4 @@
+<p>名前を押すと対象の当選種類を編集できます</p>
 <table class="table">
     <thead>
         <tr>
