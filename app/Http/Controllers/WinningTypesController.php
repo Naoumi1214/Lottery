@@ -21,9 +21,11 @@ class WinningTypesController extends Controller
         $user_id = Auth::id();
         $competition_id = $request->id;
 
+        //対象の大会の当選種類を取り出す
         $winning_typesObj = DB::table('winning_types')
             ->where('competition_id', $competition_id)
-            ->orderBy('maxNumberOfPeople');
+            ->orderBy('maxNumberOfPeople')
+            ->get();
 
         $param = [
             'competition_id' => $competition_id,

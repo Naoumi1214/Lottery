@@ -6,5 +6,6 @@
 @section('content')
 <div class="container">
     @include('competitionsComponent.createWinningTypeForm',['competition_id' => $competition_id])
+    @include('competitionsComponent.winningTypesTable',['winning_typesObj' => $winning_typesObj])
 </div>
 @endsection
