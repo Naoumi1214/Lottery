@@ -15,7 +15,7 @@ class CreateWinningTypesTable extends Migration
     {
         Schema::create('winning_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('_competition_id');
+            $table->integer('competition_id');
             $table->string('name');
             $table->integer('maxNumberOfPeople');
             $table->timestamps();

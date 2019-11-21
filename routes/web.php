@@ -29,7 +29,10 @@ Route::group(['middleware' => ['auth']], function () {
     //ホストの主催一覧
     Route::get('/my', 'CompetitionsController@my');
 
-    Route::get('/createWinningType/{id}', 'WinningTypesController@index');
+    //当選種類の管理画面
+    Route::get('/winningTypeManager/{id}', 'WinningTypesController@index');
+    //当選種類を追加
+    Route::post('/createWinningType', 'WinningTypesController@create');
 });
 //大会の詳細
 Route::get('/details/{id}', 'CompetitionsController@details');

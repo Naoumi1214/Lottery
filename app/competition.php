@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Competition extends Model
 {
     //
-    protected $table = '_competitions';
+    protected $table = 'competitions';
 
-    protected $guarded = array('id', 'user_is');
+    protected $guarded = array('id');
 
      //バリデーションルール
      public static $rules = [
-         'user_id' => 'integer',
+        'user_id' => 'required | integer',
         'name' => 'required',
     ];
 }

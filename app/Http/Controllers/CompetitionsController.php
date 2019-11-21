@@ -71,7 +71,7 @@ class CompetitionsController extends Controller
         $user = Auth::user();
         $user_id = intval($user->id);
 
-        $competitions = DB::table('_competitions')
+        $competitions = DB::table('competitions')
             ->where('user_id', $user_id)
             ->orderBy('updated_at', 'DESC')
             ->paginate(5);
@@ -84,7 +84,7 @@ class CompetitionsController extends Controller
     {
         # code...
         $competition_id = intval($request->id);
-        $competition = DB::table('_competitions')
+        $competition = DB::table('competitions')
             ->where('id', $competition_id)->first();
 
         $param = [

@@ -21,19 +21,39 @@ class WinningTypesController extends Controller
         $user_id = Auth::id();
         $competition_id = $request->id;
 
-        $param = ['competition_id' => $competition_id];
-        //DB::select('', [1]);
+        $winning_typesObj = DB::table('winning_types')
+            ->where('competition_id', $competition_id)
+            ->orderBy('maxNumberOfPeople');
+
+        $param = [
+            'competition_id' => $competition_id,
+            'winning_typesObj' => $winning_typesObj
+        ];
+
         return view('/createWinningType', $param);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     *  当選種類をinsert
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $this->validate($request, WinningType::$rules);
+
+        $param = [
+            'competition_id' => intval($request->competition_id),
+            'name' => $request->name,
+            'maxNumberOfPeople' => intval($request->maxNumberOfPeople)
+        ];
+        //var_dump($param);
+
+        $winningType = new WinningType();
+        $winningType->fill($param)->save();
+
+        return redirect("/winningTypeManager/{$request->competition_id}");
     }
 
     /**
