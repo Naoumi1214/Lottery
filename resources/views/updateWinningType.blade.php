@@ -19,7 +19,7 @@
             <select class="form-control" name="maxNumberOfPeople" id="maxNumberOfPeople">
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">追加する</button>
+        <button type="submit" class="btn btn-primary">更新する</button>
     </form>
 
 </div>
