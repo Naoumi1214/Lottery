@@ -19,7 +19,13 @@ class WinningNoController extends Controller
     public function management(Request $request)
     {
         # code...
+        $id = $request->id;
 
+        $param = [
+            'competition_id' => $id,
+        ];
+
+        return view('winningNomanagement',$param);
     }
 
 

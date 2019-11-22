@@ -26,7 +26,7 @@
                 @if (Auth::check() && Auth::id()===$user_id)
                 <a href="{{url('/winningTypeManager', $id)}}" class="btn btn-primary active btn-block center-block"
                     role="button">当選種類を管理する</a>
-                <a href="{{url('/winningTypeManager', $id)}}" class="btn btn-primary active btn-block center-block"
+                <a href="{{url('/winningNoManager', $id)}}" class="btn btn-primary active btn-block center-block"
                     role="button">当選番号を管理する</a>
                 @endif
             </div>
