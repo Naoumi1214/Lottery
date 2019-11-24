@@ -2,10 +2,11 @@
 <div id="ramdom" class="winningform">
     <h3>当選種類別にランダムに当選させる</h3>
     <form action="" method="post">
-        <input type="hidden" name="competition_id">
+        @csrf
+        <input type="hidden" name="competition_id" value="{{$competition_id}}">
         <div class="form-group">
             <label for="">当選種類</label>
-            <select class="form-control" name="winning_types_id" id="">
+            <select class="form-control" name="winning_type_id" id="">
                 @foreach ($winningtypes as $item)
                 <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;最大人数：{{$item->maxNumberOfPeople}}
                 </option>
@@ -17,10 +18,12 @@
 </div>
 <div id="single" class="winningform">
     <h3>個別に当選させる</h3>
-    <form action="" method="post">
+    <form action="/createWinningNoSingle" method="post">
+        @csrf
+        <input type="hidden" name="competition_id" value="{{$competition_id}}">
         <div class="form-group">
             <label for="">当選種類</label>
-            <select class="form-control" name="winning_types_id" id="">
+            <select class="form-control" name="winning_type_id" id="">
                 @foreach ($winningtypes as $item)
                 <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;最大人数：{{$item->maxNumberOfPeople}}
                 </option>
@@ -29,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="">当選番号</label>
-            <textarea class="form-control" name="winningNo" id="" rows="1"></textarea>
+            <textarea class="form-control" name="no" id="" rows="1"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">当選させる</button>
     </form>
@@ -37,10 +40,11 @@
 <div id="between" class="winningform">
     <h3>当選種類別に範囲を決めて当選させる</h3>
     <form action="" method="post">
-        <input type="hidden" name="competition_id">
+        @csrf
+        <input type="hidden" name="competition_id" value="{{$competition_id}}">
         <div class="form-group">
             <label for="">当選種類</label>
-            <select class="form-control" name="winning_types_id" id="">
+            <select class="form-control" name="winning_type_id" id="">
                 @foreach ($winningtypes as $item)
                 <option value="{{$item->id}}">{{$item->name}}&nbsp;&nbsp;&nbsp;最大人数：{{$item->maxNumberOfPeople}}
                 </option>

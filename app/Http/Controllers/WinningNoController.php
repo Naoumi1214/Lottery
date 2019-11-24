@@ -42,9 +42,20 @@ class WinningNoController extends Controller
     /**
      * 個別当選
      */
-    public function FunctionName(Request $request)
+    public function createSignle(Request $request)
     {
         # code...
+        $this->validate($request, WinningNo::$rules);
 
+        $param = [
+            'winning_type_id' => $request->winning_type_id,
+            'competition_id' => $request->competition_id,
+            'no' => $request->no
+        ];
+        //dd($param);
+
+        WinningNo::create($param);
+
+        return redirect('/winningNoManager/'. $request->competition_id);
     }
 }

@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-@include('competitionsComponent.createwinningNoform')
+@include('competitionsComponent.createwinningNoform',['competition_id'])
 </div>
 @endsection

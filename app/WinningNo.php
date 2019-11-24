@@ -13,9 +13,9 @@ class WinningNo extends Model
 
     //バリデーションルール
     public static $rules = [
-        'competition_id' => 'required | integer',
         'winning_type_id' => 'required | integer',
-        'no' => 'required | integer'
+        'competition_id' => 'required | integer',
+        'no' => 'integer'
     ];
 
 }
