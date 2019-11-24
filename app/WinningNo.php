@@ -17,4 +17,5 @@ class WinningNo extends Model
         'winning_type_id' => 'required | integer',
         'no' => 'required | integer'
     ];
+
 }

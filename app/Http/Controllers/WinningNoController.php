@@ -18,6 +18,9 @@ class WinningNoController extends Controller
         # code...
     }
 
+    /**
+     * 当選番号の管理画面に遷移する
+     */
     public function management(Request $request)
     {
         # code...
@@ -36,5 +39,12 @@ class WinningNoController extends Controller
         return view('winningNomanagement', $param);
     }
 
+    /**
+     * 個別当選
+     */
+    public function FunctionName(Request $request)
+    {
+        # code...
 
+    }
 }
