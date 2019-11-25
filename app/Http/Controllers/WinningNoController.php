@@ -32,14 +32,16 @@ class WinningNoController extends Controller
         AND types.maxNumberOfPeople >
         (SELECT COUNT(*) FROM winning_nos nos
         WHERE nos.competition_id = ?
-        AND nos.winning_type_id = types.id)', [$id, $id]);
+        AND nos.winning_type_id = types.id)
+        ORDER BY types.maxNumberOfPeople , types.name', [$id, $id]);
         //dd($winningtypes);
 
         //当選番号の番号本体と当選種類名の一覧を取り出す
         $winning_noObjs = DB::select('SELECT nos.no , types.name FROM winning_nos nos, winning_types types
         WHERE nos.competition_id = ?
         AND types.competition_id = ?
-        AND nos.winning_type_id = types.id', [$id, $id]);
+        AND nos.winning_type_id = types.id
+        ORDER BY types.maxNumberOfPeople , types.name , nos.no', [$id, $id]);
         //dd(winning_noObjs);
 
         $param = [
