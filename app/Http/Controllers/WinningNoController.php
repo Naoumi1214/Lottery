@@ -31,9 +31,17 @@ class WinningNoController extends Controller
             ->orderBy('maxNumberOfPeople')
             ->orderBy('name')->get();
 
+        //当選番号の番号本体と当選種類名の一覧を取り出す
+        $winning_noObjs = DB::select('SELECT nos.no , types.name FROM winning_nos nos, winning_types types
+         WHERE nos.competition_id = ?
+         AND types.competition_id = ?
+         AND nos.winning_type_id = types.id', [$id, $id]);
+        //dd(winning_noObjs);
+
         $param = [
             'competition_id' => $id,
-            'winningtypes' => $winningtypes
+            'winningtypes' => $winningtypes,
+            'winning_noObjs' => $winning_noObjs
         ];
 
         return view('winningNomanagement', $param);
@@ -56,6 +64,6 @@ class WinningNoController extends Controller
 
         WinningNo::create($param);
 
-        return redirect('/winningNoManager/'. $request->competition_id);
+        return redirect('/winningNoManager/' . $request->competition_id);
     }
 }

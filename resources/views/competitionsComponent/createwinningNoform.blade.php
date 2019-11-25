@@ -77,6 +77,12 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($winning_noObjs as $winning_noObj)
+        <tr>
+        <td scope="row">{{$winning_noObj->name}}</td>
+        <td>{{$winning_noObj->no}}</td>
+        </tr>
+        @endforeach
         <tr>
             <td scope="row"></td>
             <td></td>
