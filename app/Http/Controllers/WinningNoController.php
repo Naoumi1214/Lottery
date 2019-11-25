@@ -26,10 +26,14 @@ class WinningNoController extends Controller
         # code...
         $id = $request->id;
 
-        $winningtypes = DB::table('winning_types')
-            ->where('competition_id', $id)
-            ->orderBy('maxNumberOfPeople')
-            ->orderBy('name')->get();
+        //当選者数が当選最大当選人数未満の当選種類を取り出す
+        $winningtypes = DB::select('SELECT * FROM winning_types types
+        WHERE types.competition_id = ?
+        AND types.maxNumberOfPeople >
+        (SELECT COUNT(*) FROM winning_nos nos
+        WHERE nos.competition_id = ?
+        AND nos.winning_type_id = types.id)', [$id, $id]);
+        //dd($winningtypes);
 
         //当選番号の番号本体と当選種類名の一覧を取り出す
         $winning_noObjs = DB::select('SELECT nos.no , types.name FROM winning_nos nos, winning_types types
