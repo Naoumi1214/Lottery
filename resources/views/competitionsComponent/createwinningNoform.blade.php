@@ -8,7 +8,7 @@
             <label for="">当選種類</label>
             <select class="form-control" name="winning_type_id" id="">
                 @foreach ($winningtypes as $item)
-                <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;最大人数：{{$item->maxNumberOfPeople}}
+                <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;当選最大人数：{{$item->maxNumberOfPeople}}
                 </option>
                 @endforeach
             </select>
@@ -17,7 +17,7 @@
     </form>
 </div>
 <div id="single" class="winningform">
-    <h3>個別に当選させる</h3>
+    <h3>個別に番号を決めて当選させる</h3>
     <form action="/createWinningNoSingle" method="post">
         @csrf
         <input type="hidden" name="competition_id" value="{{$competition_id}}">
@@ -25,7 +25,7 @@
             <label for="">当選種類</label>
             <select class="form-control" name="winning_type_id" id="">
                 @foreach ($winningtypes as $item)
-                <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;最大人数：{{$item->maxNumberOfPeople}}
+                <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;当選最大人数：{{$item->maxNumberOfPeople}}
                 </option>
                 @endforeach
             </select>
@@ -46,7 +46,7 @@
             <label for="">当選種類</label>
             <select class="form-control" name="winning_type_id" id="">
                 @foreach ($winningtypes as $item)
-                <option value="{{$item->id}}">{{$item->name}}&nbsp;&nbsp;&nbsp;最大人数：{{$item->maxNumberOfPeople}}
+                <option value="{{$item->id}}">{{$item->name}}&nbsp;&nbsp;&nbsp;当選最大人数：{{$item->maxNumberOfPeople}}
                 </option>
                 @endforeach
             </select>
@@ -78,9 +78,9 @@
     </thead>
     <tbody>
         @foreach ($winning_noObjs as $winning_noObj)
-        <tr>
-        <td scope="row">{{$winning_noObj->name}}</td>
-        <td>{{$winning_noObj->no}}</td>
+        <tr class="">
+            <td scope="row">{{$winning_noObj->name}}</td>
+            <td><a href="{{url('/updateNo', $winning_noObj->id)}}" style="color: blue;">{{$winning_noObj->no}}</a></td>
         </tr>
         @endforeach
         <tr>

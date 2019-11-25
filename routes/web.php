@@ -38,7 +38,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     //当選番号の管理
     Route::get('/winningNoManager/{id}', 'WinningNoController@management');
+    //個別に番号を決めて当選させる
     Route::post('/createWinningNoSingle', 'WinningNoController@createSignle');
+    //当選番号の修正(更新処理)
+    Route::get('/updateNo/{id}', 'WinningNoController@updateNo');
 
 });
 //大会の詳細

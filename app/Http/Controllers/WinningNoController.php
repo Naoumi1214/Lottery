@@ -37,7 +37,7 @@ class WinningNoController extends Controller
         //dd($winningtypes);
 
         //当選番号の番号本体と当選種類名の一覧を取り出す
-        $winning_noObjs = DB::select('SELECT nos.no , types.name FROM winning_nos nos, winning_types types
+        $winning_noObjs = DB::select('SELECT nos.id,nos.no , types.name FROM winning_nos nos, winning_types types
         WHERE nos.competition_id = ?
         AND types.competition_id = ?
         AND nos.winning_type_id = types.id
@@ -71,5 +71,16 @@ class WinningNoController extends Controller
         WinningNo::create($param);
 
         return redirect('/winningNoManager/' . $request->competition_id);
+    }
+
+    public function updateNo(Request $request)
+    {
+        # code...
+        $id = $request->id;
+        $targetNo = WinningNo::find($id);
+
+        $param = ['targetNo' => $targetNo];
+
+        return view('updateWinningNo', $param);
     }
 }
