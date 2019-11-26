@@ -87,7 +87,19 @@ class WinningNoController extends Controller
     public function createRandom(Request $request)
     {
         # code...
+        $this->validate($request, WinningNo::$rules);
 
+        $no = rand(0,intval($request->maxno));
+
+        $param = [
+            'winning_type_id' => $request->winning_type_id,
+            'competition_id' => $request->competition_id,
+            'no' => $no
+        ];
+
+        WinningNo::create($param);
+
+        return redirect('/winningNoManager/' . $request->competition_id);
     }
 
     /**

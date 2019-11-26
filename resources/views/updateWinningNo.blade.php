@@ -5,7 +5,6 @@
     <h3>当選番号を変更する</h3>
     <form action="/updateNo" method="post">
         @csrf
-        <input type="hidden" name="competition_id" value="{{$targetNo->competition_id}}">
         <input type="hidden" name="id" value="{{$targetNo->id}}">
         <div class="form-group">
             <label for=""></label>

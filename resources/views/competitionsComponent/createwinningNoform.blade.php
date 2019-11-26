@@ -1,7 +1,7 @@
 <h1 style="margin-bottom: 10px">当選を行う</h1>
 <div id="ramdom" class="winningform">
     <h3>当選種類別にランダムに当選させる</h3>
-    <form action="" method="post">
+    <form action="/createWinningNoRandom" method="post">
         @csrf
         <input type="hidden" name="competition_id" value="{{$competition_id}}">
         <div class="form-group">
@@ -12,6 +12,10 @@
                 </option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            <label for="">当選番号の上限</label>
+            <input type="text" name="maxno" id="" class="form-control" placeholder="" aria-describedby="helpId">
         </div>
         <button type="submit" class="btn btn-primary">当選させる</button>
     </form>

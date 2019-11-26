@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/winningNoManager/{id}', 'WinningNoController@management');
     //個別に番号を決めて当選させる
     Route::post('/createWinningNoSingle', 'WinningNoController@createSignle');
-    Route::post('/createWinningNoSingle', 'WinningNoController@createRandom');
+    Route::post('/createWinningNoRandom', 'WinningNoController@createRandom');
     //当選番号の修正(更新処理)
     Route::get('/updateNo/{id}', 'WinningNoController@updateNo');
     Route::post('/updateNo', 'WinningNoController@editNo');

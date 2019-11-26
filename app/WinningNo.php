@@ -15,7 +15,9 @@ class WinningNo extends Model
     public static $rules = [
         'winning_type_id' => 'required | integer',
         'competition_id' => 'required | integer',
-        'no' => 'integer'
+        'no' => 'integer',
+        'maxno' => 'integer'
     ];
+
 
 }
