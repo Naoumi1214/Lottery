@@ -43,7 +43,7 @@
 </div>
 <div id="between" class="winningform">
     <h3>当選種類別に範囲を決めて当選させる</h3>
-    <form action="" method="post">
+    <form action="/createBetweenRandom" method="post">
         @csrf
         <input type="hidden" name="competition_id" value="{{$competition_id}}">
         <div class="form-group">

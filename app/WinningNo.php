@@ -16,7 +16,8 @@ class WinningNo extends Model
         'winning_type_id' => 'required | integer',
         'competition_id' => 'required | integer',
         'no' => 'integer',
-        'maxno' => 'integer'
+        'maxno' => 'integer',
+        'minno' => 'integer',
     ];
 
 
