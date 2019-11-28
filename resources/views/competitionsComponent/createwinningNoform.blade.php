@@ -20,27 +20,7 @@
         <button type="submit" class="btn btn-primary">当選させる</button>
     </form>
 </div>
-<div id="single" class="winningform">
-    <h3>個別に番号を決めて当選させる</h3>
-    <form action="/createWinningNoSingle" method="post">
-        @csrf
-        <input type="hidden" name="competition_id" value="{{$competition_id}}">
-        <div class="form-group">
-            <label for="">当選種類</label>
-            <select class="form-control" name="winning_type_id" id="">
-                @foreach ($winningtypes as $item)
-                <option value="{{$item->id}}">種類名：{{$item->name}}&nbsp;&nbsp;&nbsp;当選最大人数：{{$item->maxNumberOfPeople}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="">当選番号</label>
-            <textarea class="form-control" name="no" id="" rows="1"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">当選させる</button>
-    </form>
-</div>
+
 <div id="between" class="winningform">
     <h3>当選種類別に範囲を決めて当選させる</h3>
     <form action="/createBetweenRandom" method="post">
