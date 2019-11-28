@@ -16,6 +16,58 @@ class WinningNoController extends Controller
     public function index(Request $request)
     {
         # code...
+        $winning_noObjs = DB::select(
+            'SELECT * FROM winning_nos nos, winning_types types
+            WHERE nos.competition_id = ?
+            AND nos.winning_type_id =  types.id
+            ORDER BY types.maxNumberOfPeople , nos.no',
+            [$request->id]
+        );
+
+        //dd($winningNos);
+        $param = [
+            'winning_noObjs' => $winning_noObjs
+        ];
+
+        return view('winningNo', $param);
+    }
+
+    public function singleNoselect(Request $request)
+    {
+        # code...
+        $id = $request->id;
+
+        $param = [
+            'id' => $id
+        ];
+
+        return view('singleNoConfirmation', $param);
+    }
+
+
+    public function singleNoConfirmation(Request $request)
+    {
+        # code...
+        $sqlparam = [
+            $request->no,
+            $request->id
+        ];
+
+        $winning_nos = DB::select(
+            'SELECT types.name,nos.no FROM winning_nos nos, winning_types types
+            WHERE nos.no = ?
+            AND nos.competition_id = ?
+            AND types.id = nos.winning_type_id',
+            $sqlparam
+        );
+
+        //dd($winning_no);
+
+        $param = [
+            'winning_nos' => $winning_nos
+        ];
+
+        return response()->json($param);
     }
 
     /**

@@ -16,12 +16,14 @@
             </div>
             <div class="row mx-auto" 　style="margin-top: 10px;">
                 <!--mobile-->
-                <a href="#" class="btn btn-primary active btn-block d-md-none center-block" role="button">当選番号一覧</a>
-                <a href="#" class="btn btn-primary active btn-block d-md-none center-block" role="button">当選を確認</a>
-                <!--PC-->
-                <a href="#" class="btn btn-primary active btn-block d-none d-md-inline col-md-5 ml-md-3"
+                <a href="{{url('/winningNo', $id)}}" class="btn btn-primary active btn-block d-md-none center-block"
                     role="button">当選番号一覧</a>
-                <a href="#" class="btn btn-primary active btn-block d-none d-md-inline col-md-5 ml-md-3"
+                <a href="{{url('/singleNoConfirmation', $id)}}" class="btn btn-primary active btn-block d-md-none center-block" role="button">当選を確認</a>
+                <!--PC-->
+                <a href="{{url('/winningNo', $id)}}"
+                    class="btn btn-primary active btn-block d-none d-md-inline col-md-5 ml-md-3"
+                    role="button">当選番号一覧</a>
+                <a href="{{url('/singleNoConfirmation', $id)}}" class="btn btn-primary active btn-block d-none d-md-inline col-md-5 ml-md-3"
                     role="button">当選を確認</a>
                 @if (Auth::check() && Auth::id()===$user_id)
                 <a href="{{url('/winningTypeManager', $id)}}" class="btn btn-primary active btn-block center-block"
