@@ -36,7 +36,8 @@ Route::group(['middleware' => ['auth']], function () {
     //当選種類の編集
     Route::get('/updateWinningType/{id}', 'WinningTypesController@update');
     Route::post('/updateWinningType/{id}', 'WinningTypesController@edit');
-
+    //当選種類の削除
+    Route::post('/deleteWinningType', 'WinningTypesController@destroy');
 
     //当選番号の管理
     Route::get('/winningNoManager/{id}', 'WinningNoController@management');

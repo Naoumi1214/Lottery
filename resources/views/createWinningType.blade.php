@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('javascript-head')
-
-@endsection
+<script src="{{ asset('js/deleteWinningTypeAjax.js') }}" defer></script>
 <script src="{{ asset('js/selectboxNumber.js') }}" defer></script>
+@endsection
 @section('content')
 <div class="container">
     @include('competitionsComponent.createWinningTypeForm',['competition_id' => $competition_id])

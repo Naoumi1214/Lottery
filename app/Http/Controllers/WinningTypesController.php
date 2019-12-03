@@ -119,12 +119,15 @@ class WinningTypesController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * 当選種類の削除
      * @param  \App\WinningType  $winningType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WinningType $winningType)
+    public function destroy(WinningType $winningType,Request $request)
     {
         //
+        intval($request->id);
+
+        WinningType::destroy($request->id);
     }
 }
