@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/createWinningType', 'WinningTypesController@create');
     //当選種類の編集
     Route::get('/updateWinningType/{id}', 'WinningTypesController@update');
+    Route::post('/updateWinningType/{id}', 'WinningTypesController@edit');
 
 
     //当選番号の管理
@@ -48,14 +49,12 @@ Route::group(['middleware' => ['auth']], function () {
     //当選番号の修正(更新処理)
     Route::get('/updateNo/{id}', 'WinningNoController@updateNo');
     Route::post('/updateNo', 'WinningNoController@editNo');
-
 });
 //大会の詳細
 Route::get('/details/{id}', 'CompetitionsController@details');
 
 //当選番号の一覧表示
 Route::get('/winningNo/{id}', 'WinningNoController@index');
-//当選番号の確認
+
 Route::get('/singleNoConfirmation/{id}', 'WinningNoController@singleNoselect');
 Route::post('/singleNoConfirmation', 'WinningNoController@singleNoConfirmation');
-

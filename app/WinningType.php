@@ -17,4 +17,9 @@ class WinningType extends Model
         'name' => 'required',
         'maxNumberOfPeople' => 'required | integer'
     ];
+
+    public static $update_rules = [
+        'name' => 'required',
+        'maxNumberOfPeople' => 'required | integer'
+    ];
 }

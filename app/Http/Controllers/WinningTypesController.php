@@ -18,7 +18,6 @@ class WinningTypesController extends Controller
     public function index(Request $request)
     {
         //
-        $user_id = Auth::id();
         $competition_id = $request->id;
 
         //対象の大会の当選種類を取り出す
@@ -78,22 +77,30 @@ class WinningTypesController extends Controller
     public function show(WinningType $winningType)
     {
         //
+
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *  当選種類の更新自体をする
      * @param  \App\WinningType  $winningType
      * @return \Illuminate\Http\Response
      */
-    public function edit(WinningType $winningType)
+    public function edit(WinningType $winningType, Request $request)
     {
         //
+        //dd($request->all());
+        $this->validate($request, WinningType::$update_rules);
+
+        $winningType = WinningType::find($request->id);
+        $winningType->fill($request->all())->save();
+
+        return redirect("/winningTypeManager/{$winningType->competition_id}");
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     *  当選種類の更新画面へ遷移する
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\WinningType  $winningType
      * @return \Illuminate\Http\Response
@@ -103,11 +110,11 @@ class WinningTypesController extends Controller
         //
         $winningType = WinningType::find($request->id);
 
-        $param =[
+        $param = [
             'winningType' => $winningType
         ];
 
-        return view('updateWinningType',$param);
+        return view('updateWinningType', $param);
     }
 
     /**
