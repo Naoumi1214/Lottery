@@ -57,5 +57,6 @@ Route::get('/details/{id}', 'CompetitionsController@details');
 //当選番号の一覧表示
 Route::get('/winningNo/{id}', 'WinningNoController@index');
 
+//当選番号確認
 Route::get('/singleNoConfirmation/{id}', 'WinningNoController@singleNoselect');
 Route::post('/singleNoConfirmation', 'WinningNoController@singleNoConfirmation');

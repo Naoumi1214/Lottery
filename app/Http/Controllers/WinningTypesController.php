@@ -20,6 +20,12 @@ class WinningTypesController extends Controller
         //
         $competition_id = $request->id;
 
+        //存在しない大会のidが来た場合、'/'へリダイレクト
+        if (!Competition::selectId($competition_id)) {
+            # code...
+            return redirect('/');
+        }
+
         //対象の大会の当選種類を取り出す
         $winning_typesObj = DB::table('winning_types')
             ->where('competition_id', $competition_id)
@@ -123,7 +129,7 @@ class WinningTypesController extends Controller
      * @param  \App\WinningType  $winningType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WinningType $winningType,Request $request)
+    public function destroy(WinningType $winningType, Request $request)
     {
         //
         intval($request->id);

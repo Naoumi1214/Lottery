@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\WinningNo;
 use App\WinningType;
+use App\Competition;
 
 class WinningNoController extends Controller
 {
@@ -31,7 +32,9 @@ class WinningNoController extends Controller
 
         return view('winningNo', $param);
     }
-
+    /**
+     * 当選番号確認画面へ遷移する
+     */
     public function singleNoselect(Request $request)
     {
         # code...
@@ -44,7 +47,9 @@ class WinningNoController extends Controller
         return view('singleNoConfirmation', $param);
     }
 
-
+    /**
+     * 当選番号確認にて番号を確認する
+     */
     public function singleNoConfirmation(Request $request)
     {
         # code...
@@ -120,6 +125,7 @@ class WinningNoController extends Controller
     {
         # code...
         $this->validate($request, WinningNo::$rules);
+        Competition::selectId($request->competition_id);
 
         $param = [
             'winning_type_id' => $request->winning_type_id,
@@ -149,9 +155,24 @@ class WinningNoController extends Controller
             'no' => $no
         ];
 
-        WinningNo::create($param);
+        //番号をinsert
+        $winningNo = new WinningNo();
+        $winningNo->fill($param)->save();
+        //dd($winningNo->no);
 
-        return redirect('/winningNoManager/' . $request->competition_id);
+        //insertした番号の当選種類の名前を取得
+        $winningTypes = DB::select(
+            'SELECT * FROM winning_types types, winning_nos no
+             WHERE types.id = no.winning_type_id
+             AND no.id = ?',
+            [$winningNo->id]
+        );
+
+        return response()->json([
+            'id' => $winningNo->id,
+            'no' => $winningNo->no,
+            'winningType' => $winningTypes[0]
+        ]);
     }
 
     public function createBetweenRandom(Request $request)

@@ -84,17 +84,25 @@ class CompetitionsController extends Controller
     {
         # code...
         $competition_id = intval($request->id);
-        $competition = DB::table('competitions')
-            ->where('id', $competition_id)->first();
+        try {
+            //code...
+            $competition = DB::table('competitions')
+                ->where('id', $competition_id)->first();
 
-        $param = [
-            'id' => $competition->id,
-            'user_id' => $competition->user_id,
-            'name' => $competition->name,
-            'overview' => $competition->overview,
-            'icon' => $competition->icon
-        ];
-        //var_dump($param);
-        return view('/details',$param);
+            $param = [
+                'id' => $competition->id,
+                'user_id' => $competition->user_id,
+                'name' => $competition->name,
+                'overview' => $competition->overview,
+                'icon' => $competition->icon
+            ];
+
+            //var_dump($param);
+            return view('/details', $param);
+        } catch (\Throwable $th) {
+            //throw $th;
+            //問題が発生した場合は'/'へリダイレクト
+            return redirect('/');
+        }
     }
 }
