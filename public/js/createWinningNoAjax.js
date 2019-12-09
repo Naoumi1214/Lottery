@@ -1,7 +1,36 @@
 $(function () {
+
+	/**
+     * 当たった番号をモーダルウィンドウに演出しながら出力する
+     * @param {number} no
+     * @param {string} name
+     */
+	const openModalWindow = (no, name) => {
+		$('#modelId').modal('show');
+
+		//フェード時間
+		const fadeinTime = 5500;
+		//オーディオオブジェクト
+		const audioElem = new Audio();
+		audioElem.src = '../storage/audio/se_maoudamashii_instruments_drumroll.mp3';
+
+		const btn = $('#start');
+		btn.click(function () {
+			//数字を出力するタグ
+			const notest = $('#no');
+
+			audioElem.play();
+
+			//当選番号と当選種類名を出力
+			setTimeout(function () {
+				notest.text(no);
+			}, fadeinTime);
+		});
+	};
+
 	/**
      * tbodyに記録を追加する
-     * @param {*} data
+     * @param {object} data
      */
 	const tableInnner = (data) => {
 		const nametd = document.createElement('td');
@@ -10,8 +39,9 @@ $(function () {
 		console.log(nametd);
 
 		const a = document.createElement('a');
-		a.href = '/updateNo' + data.id;
+		a.href = '/updateNo/' + data.id;
 		a.textContent = data.no;
+
 		const notd = document.createElement('td');
 		notd.appendChild(a);
 		console.log(notd);
@@ -51,6 +81,7 @@ $(function () {
 			console.log('OK');
 			console.log(data);
 
+			openModalWindow(data.no, data.winningType['name']);
 			tableInnner(data);
 
 		}).fail(function (data) {
