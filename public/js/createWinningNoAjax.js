@@ -67,6 +67,7 @@ $(function () {
 		const targetType = $('#ramdom .winning_type_id').val();
 		const maxno = $('#ramdom').find('input[name="maxno"]').val();
 		const competition_id = $('#ramdom').find('input[name="competition_id"]').val();
+		const duplicate = Boolean($('#ramdom').find('input[name="duplicate"]').val());
 
 		$.ajax({
 			url: '/createWinningNoRandom',
@@ -74,7 +75,8 @@ $(function () {
 			data: {
 				'competition_id': competition_id,
 				'winning_type_id': targetType,
-				'maxno': maxno
+				'maxno': maxno,
+				'duplicate':duplicate
 			}
 		}).done((data) => {
 			//通信成功

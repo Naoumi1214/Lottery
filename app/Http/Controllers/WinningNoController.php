@@ -147,8 +147,21 @@ class WinningNoController extends Controller
         # code...
         $this->validate($request, WinningNo::$rules);
 
-        $no = rand(0, intval($request->maxno));
+        //重複許可のcheckboxがチェックさえれてない場合
+        if ($request->duplicate == null) {
+            # code...
+            $request->duplicate = false;
+        }
 
+        $winningNo = new WinningNo();
+        //乱数の生成
+        $no = $winningNo->createRamdomNo(
+            $request->duplicate,
+            $request->maxno,
+            $request->winning_type_id
+        );
+
+        //insertパラメータ
         $param = [
             'winning_type_id' => $request->winning_type_id,
             'competition_id' => $request->competition_id,
@@ -156,7 +169,6 @@ class WinningNoController extends Controller
         ];
 
         //番号をinsert
-        $winningNo = new WinningNo();
         $winningNo->fill($param)->save();
         //dd($winningNo->no);
 

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('javascript-head')
-<script src="{{ asset('js/selectboxNumber.js') }}" defer></script>
 
 @endsection
 @section('content')
@@ -15,9 +14,9 @@
                 aria-describedby="helpId">
         </div>
         <div class="form-group">
-            <label for="">最大当選人数</label>
-            <select class="form-control" name="maxNumberOfPeople" id="maxNumberOfPeople">
-            </select>
+          <label for="">最大当選人数</label>
+          <input type="text"name="maxNumberOfPeople" id="maxNumberOfPeople" class="form-control" placeholder="" aria-describedby="helpId">
+          <small id="helpId" class="text-muted">数秒をご入力してください</small>
         </div>
         <button type="submit" class="btn btn-primary">更新する</button>
     </form>

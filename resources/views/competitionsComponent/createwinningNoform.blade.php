@@ -17,6 +17,12 @@
             <label for="">当選番号の上限</label>
             <input type="text" name="maxno" id="" class="form-control" placeholder="" aria-describedby="helpId">
         </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="duplicate" id="" value="true">
+                重複を許す
+            </label>
+        </div>
         <button id="randomHitbtn" type="button" class="btn btn-primary">当選させる</button>
     </form>
 </div>
@@ -47,16 +53,16 @@
                 </div>
                 <p>※片方だけでも決めることができます</p>
             </div>
-
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="duplicate" id="" value="true">
+                    重複を許す
+                </label>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">当選させる</button>
     </form>
 </div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-    Launch
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -69,7 +75,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h1 id="no" class="display-1" style="text-align: center;">?</h1>
+                <h1 id="no" class="display-1" style="text-align: center;">&nbsp;</h1>
                 <h2>当選種類：</h2>
             </div>
             <div class="modal-footer">
