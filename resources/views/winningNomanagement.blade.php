@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('javascript-head')
 <script src="{{ asset('js/createWinningNoAjax.js') }}" defer></script>
+<script src="{{ asset('js/dereateWinningNoAjax.js') }}" defer></script>
 @endsection
 @section('content')
 <div class="container">

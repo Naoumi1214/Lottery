@@ -91,13 +91,15 @@
         <tr>
             <th>当選種類名</th>
             <th>当選番号</th>
+            <th>当選番号</th>
         </tr>
     </thead>
     <tbody id="winning_noObjs_tbody">
         @foreach ($winning_noObjs as $winning_noObj)
-        <tr class="">
+        <tr id="{{$winning_noObj->id}}tr" class="">
             <td scope="row">{{$winning_noObj->name}}</td>
             <td><a href="{{url('/updateNo', $winning_noObj->id)}}" style="color: blue;">{{$winning_noObj->no}}</a></td>
+            <td><button type="button" id="{{$winning_noObj->id}}" class="btn btn-primary deletebtn">削除する</button></td>
         </tr>
         @endforeach
     </tbody>

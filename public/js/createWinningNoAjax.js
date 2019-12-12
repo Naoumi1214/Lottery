@@ -15,7 +15,7 @@ $(function () {
 		audioElem.src = '../storage/audio/se_maoudamashii_instruments_drumroll.mp3';
 
 		const btn = $('#start');
-		btn.click(function () {
+		btn.on('click',function () {
 			//数字を出力するタグ
 			const notest = $('#no');
 
@@ -33,11 +33,13 @@ $(function () {
      * @param {object} data
      */
 	const tableInnner = (data) => {
+		//一列目
 		const nametd = document.createElement('td');
 		nametd.setAttribute('scope', 'row');
 		nametd.textContent = data.winningType['name'];
 		console.log(nametd);
 
+		//2列目
 		const a = document.createElement('a');
 		a.href = '/updateNo/' + data.id;
 		a.textContent = data.no;
@@ -46,9 +48,22 @@ $(function () {
 		notd.appendChild(a);
 		console.log(notd);
 
+		//3列目
+		const btn = document.createElement('button');
+		btn.setAttribute('type', 'button');
+		btn.id = data.id;
+		btn.className = 'btn btn-primary deletebtn';
+		btn.textContent = '削除する';
+
+		const btntd = document.createElement('td');
+		btntd.appendChild(btn);
+
+		//行の組み立て
 		const tr = document.createElement('tr');
+		tr.id = data.id + 'tr';
 		tr.appendChild(nametd);
 		tr.appendChild(notd);
+		tr.appendChild(btntd);
 		console.log(tr);
 
 		$('#winning_noObjs_tbody').append(tr);
@@ -63,7 +78,7 @@ $(function () {
 	});
 
 	//当選種類別にランダムに当選させる
-	$('#randomHitbtn').click(function () {
+	$('#randomHitbtn').on('click',function () {
 		const targetType = $('#ramdom .winning_type_id').val();
 		const maxno = $('#ramdom').find('input[name="maxno"]').val();
 		const competition_id = $('#ramdom').find('input[name="competition_id"]').val();
@@ -76,7 +91,7 @@ $(function () {
 				'competition_id': competition_id,
 				'winning_type_id': targetType,
 				'maxno': maxno,
-				'duplicate':duplicate
+				'duplicate': duplicate
 			}
 		}).done((data) => {
 			//通信成功

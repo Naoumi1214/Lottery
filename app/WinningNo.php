@@ -32,36 +32,44 @@ class WinningNo extends Model
         //重複してもいいか？
         if ($duplicate) {
             # code...
-            return rand(0, intval($maxno));
+            return mt_rand(1, intval($maxno));
         } else {
             # code...
-            //対象の当選種類
+            //対象の当選種類の番号を取得する
             $winningNos = DB::select(
-                'SELECT * FROM winning_types types,winning_nos nos
+                'SELECT nos.no FROM winning_types types,winning_nos nos
                  WHERE types.id = ?
                  AND types.id = nos.winning_type_id',
                 [$winning_type_id]
             );
-            //dd($winningNos);
-
-            //重複がなくなるまで
-            $notduplicate = false;
-            while (!$notduplicate) {
+            //stdClassをarrayにキャスト
+            $winningNos = json_decode(json_encode($winningNos), true);
+            /**
+             * 配列の構造
+             * [
+             *      [
+             *          'no':数値
+             *      ]
+             * ]
+             */
+            //2次元配列の2次元目の値を取り出す
+            foreach ($winningNos as $key => $value) {
                 # code...
-                $notduplicate = true;
+                $numbers[] = $value['no'];
+            }
+            //重複がなくなるまで乱数を生成
+            while (true) {
+                # code...
+                $no = mt_rand(1, intval($maxno));
 
-                //乱数を生成
-                $no = rand(0, intval($maxno));
-
-                //重複が無いか確認
-                foreach ($winningNos as $winningNo) {
+                //生成した乱数が配列にすでに無いか？
+                if (!in_array($no, $numbers, true)) {
                     # code...
-                    if ($winningNo === $no) {
-                        $notduplicate = false;
-                        break;
-                    }
+                    break;
                 }
             }
+
+
 
             return $no;
         }

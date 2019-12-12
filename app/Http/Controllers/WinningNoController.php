@@ -235,4 +235,24 @@ class WinningNoController extends Controller
 
         return redirect('/winningNoManager/' . $targetNo->competition_id);
     }
+    /**
+     * 当選番号を削除する
+     */
+    public function delete(Request $request)
+    {
+        # code...
+        try {
+            //code...
+            WinningNo::destroy($request->id);
+
+            return response()->json([
+                'deletemessage' => true
+            ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'deletemessage' => $th
+            ]);
+        }
+    }
 }

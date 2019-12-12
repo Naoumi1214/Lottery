@@ -50,6 +50,9 @@ Route::group(['middleware' => ['auth']], function () {
     //当選番号の修正(更新処理)
     Route::get('/updateNo/{id}', 'WinningNoController@updateNo');
     Route::post('/updateNo', 'WinningNoController@editNo');
+    //当選番号の削除
+    Route::post('/deleteNo', 'WinningNoController@delete');
+
 });
 //大会の詳細
 Route::get('/details/{id}', 'CompetitionsController@details');
