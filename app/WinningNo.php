@@ -53,16 +53,18 @@ class WinningNo extends Model
              * ]
              */
             //2次元配列の2次元目の値を取り出す
+            $numbers = [];
             foreach ($winningNos as $key => $value) {
                 # code...
                 $numbers[] = $value['no'];
             }
             //重複がなくなるまで乱数を生成
+            $no = 0;
             while (true) {
                 # code...
                 $no = mt_rand(1, intval($maxno));
 
-                //生成した乱数が配列にすでに無いか？
+                //生成した乱数が配列にすでにある場合、restartラベルに移行
                 if (!in_array($no, $numbers, true)) {
                     # code...
                     break;

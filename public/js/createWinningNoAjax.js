@@ -15,7 +15,7 @@ $(function () {
 		audioElem.src = '../storage/audio/se_maoudamashii_instruments_drumroll.mp3';
 
 		const btn = $('#start');
-		btn.on('click',function () {
+		btn.on('click', function () {
 			//数字を出力するタグ
 			const notest = $('#no');
 
@@ -37,7 +37,7 @@ $(function () {
 		const nametd = document.createElement('td');
 		nametd.setAttribute('scope', 'row');
 		nametd.textContent = data.winningType['name'];
-		console.log(nametd);
+		//console.log(nametd);
 
 		//2列目
 		const a = document.createElement('a');
@@ -46,7 +46,7 @@ $(function () {
 
 		const notd = document.createElement('td');
 		notd.appendChild(a);
-		console.log(notd);
+		//console.log(notd);
 
 		//3列目
 		const btn = document.createElement('button');
@@ -64,7 +64,7 @@ $(function () {
 		tr.appendChild(nametd);
 		tr.appendChild(notd);
 		tr.appendChild(btntd);
-		console.log(tr);
+		//console.log(tr);
 
 		$('#winning_noObjs_tbody').append(tr);
 	};
@@ -78,11 +78,16 @@ $(function () {
 	});
 
 	//当選種類別にランダムに当選させる
-	$('#randomHitbtn').on('click',function () {
+	$('#randomHitbtn').on('click', function () {
 		const targetType = $('#ramdom .winning_type_id').val();
 		const maxno = $('#ramdom').find('input[name="maxno"]').val();
 		const competition_id = $('#ramdom').find('input[name="competition_id"]').val();
-		const duplicate = Boolean($('#ramdom').find('input[name="duplicate"]').val());
+		let duplicate = null;
+		//チェックボックスをチェックしているか？
+		if ($('#ramdom').find('input[name="duplicate"]').prop("checked")) {
+			duplicate = true;
+		}
+		console.log(duplicate);
 
 		$.ajax({
 			url: '/createWinningNoRandom',

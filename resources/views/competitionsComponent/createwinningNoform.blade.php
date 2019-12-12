@@ -91,7 +91,7 @@
         <tr>
             <th>当選種類名</th>
             <th>当選番号</th>
-            <th>当選番号</th>
+            <th></th>
         </tr>
     </thead>
     <tbody id="winning_noObjs_tbody">
