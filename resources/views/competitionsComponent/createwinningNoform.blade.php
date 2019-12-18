@@ -76,7 +76,7 @@
             </div>
             <div class="modal-body">
                 <h1 id="no" class="display-1" style="text-align: center;">&nbsp;</h1>
-                <h2>当選種類：</h2>
+                <h2 id="name">当選種類：</h2>
             </div>
             <div class="modal-footer">
                 <button id="start" type="button" class="btn btn-primary">当選開始！！</button>

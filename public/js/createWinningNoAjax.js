@@ -17,13 +17,15 @@ $(function () {
 		const btn = $('#start');
 		btn.on('click', function () {
 			//数字を出力するタグ
-			const notest = $('#no');
+			const notext = $('#no');
+			const nametext = $('#name');
 
 			audioElem.play();
 
 			//当選番号と当選種類名を出力
 			setTimeout(function () {
-				notest.text(no);
+				notext.text(no);
+				nametext.text('当選種類：' + name);
 			}, fadeinTime);
 		});
 	};
