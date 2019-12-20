@@ -158,7 +158,7 @@ class WinningNoController extends Controller
         $no = $winningNo->createRamdomNo(
             $request->duplicate,
             $request->maxno,
-            $request->winning_type_id
+            $request->competition_id
         );
 
         //insertパラメータ

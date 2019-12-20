@@ -26,7 +26,7 @@ class WinningNo extends Model
      * 乱数を生成
      * 重複が認められない場合は、重複の確認をしながら、乱数を生成する
      */
-    public function createRamdomNo(bool $duplicate, int $maxno, int $winning_type_id): int
+    public function createRamdomNo(bool $duplicate, int $maxno, int $competition_id): int
     {
         # code...
         //重複してもいいか？
@@ -37,11 +37,13 @@ class WinningNo extends Model
             # code...
             //対象の当選種類の番号を取得する
             $winningNos = DB::select(
-                'SELECT nos.no FROM winning_types types,winning_nos nos
-                 WHERE types.id = ?
-                 AND types.id = nos.winning_type_id',
-                [$winning_type_id]
+                'SELECT * FROM competitions competition,winning_nos nos
+                 WHERE competition.id = ?
+                 AND competition.id = nos.competition_id',
+                [$competition_id]
             );
+            //dd($winningNos);
+
             //stdClassをarrayにキャスト
             $winningNos = json_decode(json_encode($winningNos), true);
             /**
