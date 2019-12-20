@@ -43,9 +43,13 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
+     *
+     *
+     * すべてのエラーはホーム画面に遷移する
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        //return parent::render($request, $exception);
+        return redirect('/');
     }
 }
