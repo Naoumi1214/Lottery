@@ -7,7 +7,8 @@ $(function () {
      */
 	const openModalWindow = (no, name) => {
 		$('#modelId').modal('show');
-
+		//番号のテキストの初期化
+		$('#no').html('&nbsp;');
 		//フェード時間
 		const fadeinTime = 5500;
 		//オーディオオブジェクト
