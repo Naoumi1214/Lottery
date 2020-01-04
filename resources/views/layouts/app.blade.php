@@ -34,9 +34,10 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <form action="/serch" method="POST"  class="form-inline my-2 my-lg-0">
+                            @csrf
+                            <input　name="serchword" class="form-control mr-sm-2" type="text" placeholder="大会を探す">
+                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit"></input>
                         </form>
                     </li>
                 </ul>

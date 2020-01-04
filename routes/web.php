@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 //大会の詳細
 Route::get('/details/{id}', 'CompetitionsController@details');
+//ヘッダーの大会の検索バー
+Route::post('/serch', 'CompetitionsController@serch');
 
 //当選番号の一覧表示
 Route::get('/winningNo/{id}', 'WinningNoController@index');

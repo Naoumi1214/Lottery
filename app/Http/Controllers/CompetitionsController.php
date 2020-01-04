@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Competition;
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Support\Facades\Auth;
 
 class CompetitionsController extends Controller
@@ -104,5 +105,19 @@ class CompetitionsController extends Controller
             //問題が発生した場合は'/'へリダイレクト
             return redirect('/');
         }
+    }
+
+    /**
+     * ヘッダーの大会の検索バー
+     */
+    public function serch(Request $request)
+    {
+        # code...
+        $competitions =
+            DB::table('competitions')
+            ->where('name', 'like',"%$request->serchword%")
+            ->paginate(5);
+        //dd($competitions);
+        return view('home', ['competitions' => $competitions]);
     }
 }
