@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -11,7 +11,7 @@
     <title>Lottery</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js,',true) }}" defer></script>
+    <script src="{{ asset('js/app.js',true) }}" defer></script>
     @yield('javascript-head')
 
     <!-- Fonts -->
@@ -37,7 +37,7 @@
                         <form action="/serch" method="POST"  class="form-inline my-2 my-lg-0">
                             @csrf
                             <input　name="serchword" class="form-control mr-sm-2" type="text" placeholder="大会を探す">
-                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit"></input>
+                            <input id="serchsubmit" class="btn btn-outline-success my-2 my-sm-0" type="submit" value="探す">
                         </form>
                     </li>
                 </ul>
