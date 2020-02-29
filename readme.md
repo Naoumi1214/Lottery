@@ -1,4 +1,4 @@
-## 2020年愛媛県松山市三津浜小学校区の成人式の抽選会で使用したWebアプリです
+## 2020年成人式の抽選会で使用したWebアプリです
 [URL]https://seizinshikilottery.herokuapp.com/
 <h3>実装した機能</h3>
     <p>■ユーザー関係</p>
